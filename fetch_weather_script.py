@@ -4,7 +4,7 @@ import math
 
 def fetch_weather():
     city = 'hyderabad'
-    api_key = '6299531ea6be344044a98940a5e8bb6c'
+    api_key = input('Enter your API KEY')
     url = f'https://api.openweathermap.org/data/2.5/weather?lat={17.40}&lon={78.47}&appid={api_key}'
 
     try:
