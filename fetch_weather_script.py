@@ -2,10 +2,9 @@ import requests
 import math
 
 
-def fetch_weather():
-    city = 'hyderabad'
-    api_key = input('Enter your API KEY')
-    url = f'https://api.openweathermap.org/data/2.5/weather?lat={17.40}&lon={78.47}&appid={api_key}'
+def fetch_weather(city):
+    api_key = 123
+    url = f'https://api.openweathermap.org/data/2.5/weather?appid={api_key}&q={city}'
 
     try:
         response = requests.get(url)
@@ -13,11 +12,10 @@ def fetch_weather():
         weather = data['weather'][0]['description']
         curr_temp = data['main']['temp'] - 273.15
         city = data['name']
-        print(f'weather: {weather}\ncurrent temperature: {curr_temp:0,.2f}')
-
+        return {'weather': weather,
+                'curr_temp': float(str(curr_temp)[:5]),
+                'city': city}
     except Exception as err:
-        print('Error occurred !!')
+        print('Error occurred !!', err)
 
-
-fetch_weather()
-
+# print(fetch_weather('Rourkela'))
